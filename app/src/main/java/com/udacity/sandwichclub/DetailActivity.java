@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,10 +20,15 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    private ImageView iv_Sandwich_Image = (ImageView) findViewById(R.id.image_iv);
-    private TextView tv_Sandwich_Description = (TextView) findViewById(R.id.description_tv);
-    private TextView tv_Sandwich_Ingredients = (TextView) findViewById(R.id.ingredients_tv);
-    private TextView tv_Sandwich_AKA = (TextView) findViewById(R.id.also_known_tv);
+//    private ImageView iv_Sandwich_Image = (ImageView) findViewById(R.id.image_iv);
+    private TextView tv_Sandwich_Main_name;
+    private TextView tv_Sandwich_AKA_Label;
+    private TextView tv_Sandwich_AKA;
+    private TextView tv_Sandwich_Origin_Label;
+    private TextView tv_Sandwich_Origin;
+    private TextView tv_Sandwich_Description;
+    private TextView tv_Sandwich_Ingredients;
+
 
 
 
@@ -58,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        populateUI();
+        populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
@@ -71,7 +77,40 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI() {
-        //TODO 2 populate the UI via this method
+    private void populateUI(Sandwich sandwich) {
+
+        tv_Sandwich_Main_name = (TextView) findViewById(R.id.main_name_tv);
+        tv_Sandwich_AKA = (TextView) findViewById(R.id.also_known_tv);
+        tv_Sandwich_AKA_Label = (TextView) findViewById(R.id.aka_label_tv);
+        tv_Sandwich_Origin = (TextView) findViewById(R.id.origin_tv);
+        tv_Sandwich_Description = (TextView) findViewById(R.id.description_tv);
+        tv_Sandwich_Ingredients = (TextView) findViewById(R.id.ingredients_tv);
+
+
+        //TODO 2 populate the UI via this method.  The image is handled above, so we will only deal
+        //with the textviews
+
+        tv_Sandwich_Main_name.setText(sandwich.getMainName());
+
+        //Hide AKA if the field is empty
+        if(sandwich.getAlsoKnownAs().size() == 0){
+            tv_Sandwich_AKA_Label.setVisibility(View.GONE);
+            tv_Sandwich_AKA.setVisibility(View.GONE);
+        }
+
+        for(int i = 0; i < sandwich.getAlsoKnownAs().size(); i++){
+            if(i != sandwich.getAlsoKnownAs().size() - 1) {
+                tv_Sandwich_AKA.append(sandwich.getAlsoKnownAs().get(i) + "\n");
+            } else {
+                tv_Sandwich_AKA.append(sandwich.getAlsoKnownAs().get(i));
+            }
+        }
+        tv_Sandwich_Origin.setText(sandwich.getPlaceOfOrigin());
+
+        tv_Sandwich_Description.setText(sandwich.getDescription());
+
+        for(String s : sandwich.getIngredients()){
+            tv_Sandwich_Ingredients.append(s + "\n");
+        }
 }
 }
