@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,21 +25,25 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent == null) {
+            Log.e("ERROR", "intent = null");
             closeOnError();
         }
 
         int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
         if (position == DEFAULT_POSITION) {
             // EXTRA_POSITION not found in intent
+            Log.e("ERROR", "position = default");
             closeOnError();
             return;
         }
 
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
+
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
         if (sandwich == null) {
             // Sandwich data unavailable
+            Log.e("ERROR", "sandwich = null");
             closeOnError();
             return;
         }
@@ -58,5 +63,5 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI() {
         //TODO 2 populate the UI via this method
-    }
+}
 }
