@@ -5,16 +5,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import org.w3c.dom.Text;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+
+    private ImageView iv_Sandwich_Image = (ImageView) findViewById(R.id.image_iv);
+    private TextView tv_Sandwich_Description = (TextView) findViewById(R.id.description_tv);
+    private TextView tv_Sandwich_Ingredients = (TextView) findViewById(R.id.ingredients_tv);
+    private TextView tv_Sandwich_AKA = (TextView) findViewById(R.id.also_known_tv);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
