@@ -80,6 +80,7 @@ public class DetailActivity extends AppCompatActivity {
 
         tv_Sandwich_AKA = (TextView) findViewById(R.id.also_known_tv);
         tv_Sandwich_AKA_Label = (TextView) findViewById(R.id.aka_label_tv);
+        tv_Sandwich_Origin_Label = (TextView) findViewById(R.id.origin_label_tv);
         tv_Sandwich_Origin = (TextView) findViewById(R.id.origin_tv);
         tv_Sandwich_Description = (TextView) findViewById(R.id.description_tv);
         tv_Sandwich_Ingredients = (TextView) findViewById(R.id.ingredients_tv);
@@ -100,6 +101,11 @@ public class DetailActivity extends AppCompatActivity {
             } else {
                 tv_Sandwich_AKA.append(sandwich.getAlsoKnownAs().get(i));
             }
+        }
+
+        if(sandwich.getPlaceOfOrigin().isEmpty()){
+            tv_Sandwich_Origin_Label.setVisibility(View.GONE);
+            tv_Sandwich_Origin.setVisibility(View.GONE);
         }
         tv_Sandwich_Origin.setText(sandwich.getPlaceOfOrigin());
 
