@@ -26,32 +26,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/main_name_label_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/detail_main_name_label"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/image_iv"
-        app:layout_constraintTop_toBottomOf="@+id/image_iv" />
-
-    <TextView
-        android:id="@+id/main_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Sandwich Main Name Here"
-        app:layout_constraintStart_toStartOf="@+id/main_name_label_tv"
-        app:layout_constraintTop_toBottomOf="@+id/main_name_label_tv" />
-
-    <TextView
         android:id="@+id/aka_label_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/detail_also_known_as_label"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/main_name_tv"
-        app:layout_constraintTop_toBottomOf="@+id/main_name_tv" />
+        app:layout_constraintStart_toStartOf="@+id/image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/image_iv" />
 
     <TextView
         android:id="@+id/also_known_tv"

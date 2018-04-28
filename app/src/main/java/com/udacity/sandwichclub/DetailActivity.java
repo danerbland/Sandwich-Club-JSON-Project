@@ -21,7 +21,6 @@ public class DetailActivity extends AppCompatActivity {
     private static final int DEFAULT_POSITION = -1;
 
 //    private ImageView iv_Sandwich_Image = (ImageView) findViewById(R.id.image_iv);
-    private TextView tv_Sandwich_Main_name;
     private TextView tv_Sandwich_AKA_Label;
     private TextView tv_Sandwich_AKA;
     private TextView tv_Sandwich_Origin_Label;
@@ -79,7 +78,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-        tv_Sandwich_Main_name = (TextView) findViewById(R.id.main_name_tv);
         tv_Sandwich_AKA = (TextView) findViewById(R.id.also_known_tv);
         tv_Sandwich_AKA_Label = (TextView) findViewById(R.id.aka_label_tv);
         tv_Sandwich_Origin = (TextView) findViewById(R.id.origin_tv);
@@ -87,10 +85,8 @@ public class DetailActivity extends AppCompatActivity {
         tv_Sandwich_Ingredients = (TextView) findViewById(R.id.ingredients_tv);
 
 
-        //TODO 2 populate the UI via this method.  The image is handled above, so we will only deal
+        //DONE 2 populate the UI via this method.  The image is handled above, so we will only deal
         //with the textviews
-
-        tv_Sandwich_Main_name.setText(sandwich.getMainName());
 
         //Hide AKA if the field is empty
         if(sandwich.getAlsoKnownAs().size() == 0){
